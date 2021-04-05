@@ -11,5 +11,23 @@ fn main() {
 
     // type specification
     println!("{}", 31); // default is i32
-    println!("{}", 31i64);
+    println!("{}", 31i64); // i64 == long
+    println!("{}", 31f32); // float
+    println!("{}", 31f64); // double
+
+    // special formatting
+    // Special formatting can be specified after a `:`.
+    // The only appropriate formatting traits are:
+    //      - ``, which uses the `Display` trait
+    //      - `?`, which uses the `Debug` trait
+    //      - `e`, which uses the `LowerExp` trait
+    //      - `E`, which uses the `UpperExp` trait
+    //      - `o`, which uses the `Octal` trait
+    //      - `p`, which uses the `Pointer` trait
+    //      - `b`, which uses the `Binary` trait
+    //      - `x`, which uses the `LowerHex` trait
+    //      - `X`, which uses the `UpperHex` trait
+    println!("{} of {:b} people know binary, the other half doesn't", 1, 2);
+    println!("{0} in octa: {0:o}", 12); // Octal
+    println!("{0} in hexa: {0:x}", 12); // Hexadecimal
 }
