@@ -1,4 +1,5 @@
 use std::io;
+use std::cmp::Ordering; // an enum that's returned from the cmp method of all comparable type
 use rand::Rng; // this is a create provided by the community (crates.io)
 
 // the first cargo build (or run) downloads all dependencies from the registry (crates.io)
@@ -25,25 +26,35 @@ fn get_guess() -> String {
 }
 
 fn main() {
-    println!("Guess the number!");
 
-   let guess = get_guess();
-   println!("Your guess: {}", guess);
+    loop { // an infinite loop
+        println!("Guess the number!");
 
-   let random_number = get_random();
-   println!("The generated number: {}", random_number);
+        let guess = get_guess();
 
-   // Note: you can use variable shadowing in this case (it's actually recommended)
-   //       so instead of guess_str / guess or guess_int, you can simply use the same symbol to
-   //       refer to the integer value.
-   let guess_int = guess.trim()
-                   .parse::<i32>()
-                   .expect("Failed to parse integer from string");
+        // Note: you can use variable shadowing in this case (it's actually recommended)
+        //       so instead of guess_str / guess or guess_int, you can simply use the same symbol to
+        //       refer to the integer value.
+        let guess = match guess.trim().parse::<i32>() {
+            Ok(num) => num,
+            Err(why) => {
+                println!("Failed to parse integer: {}", why);
+                continue;
+            },
+        };
+                        
+        let random_number = get_random();
+        println!("The generated number: {}", random_number);
+        println!("Your guess: {}", guess);
 
-   let result = guess_int == random_number;
+        match guess.cmp(&random_number) {
+            Ordering::Equal => {
+                println!("You win");
+                break;
+            },
 
-   match result {
-       true => println!("You won"),
-       false => println!("You lose")
-   }
+            _ => println!("Try again"),
+        }
+
+    }
 }
