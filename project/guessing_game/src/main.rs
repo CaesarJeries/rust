@@ -33,6 +33,9 @@ fn main() {
    let random_number = get_random();
    println!("The generated number: {}", random_number);
 
+   // Note: you can use variable shadowing in this case (it's actually recommended)
+   //       so instead of guess_str / guess or guess_int, you can simply use the same symbol to
+   //       refer to the integer value.
    let guess_int = guess.trim()
                    .parse::<i32>()
                    .expect("Failed to parse integer from string");
