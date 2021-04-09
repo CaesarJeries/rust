@@ -27,8 +27,9 @@ fn get_guess() -> String {
 
 fn main() {
 
+    let mut num_tries = 5;
     loop { // an infinite loop
-        println!("Guess the number!");
+        println!("Guess the number! [{} tries remaining]", num_tries);
 
         let guess = get_guess();
 
@@ -56,5 +57,10 @@ fn main() {
             _ => println!("Try again"),
         }
 
+        num_tries -= 1;
+        if num_tries == 0 {
+            println!("Tough luck :/");
+            break;
+        }
     }
 }
