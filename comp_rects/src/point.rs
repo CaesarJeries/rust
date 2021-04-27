@@ -18,6 +18,6 @@ impl Point {
 impl fmt::Display for Point {
 
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        writeln!(f, "({:.3}, {:.3}, {:.3})", self.x, self.y, self.z)        
+        write!(f, "({:.3}, {:.3}, {:.3})", self.x, self.y, self.z)        
     }
 }
