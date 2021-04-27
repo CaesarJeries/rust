@@ -6,4 +6,5 @@ fn main() {
     let p = Point::new(0., 0., 0.);
 
     println!("Hello, world!");
+    println!("p = {}", p);
 }
