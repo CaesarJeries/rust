@@ -1,10 +1,11 @@
-
+extern crate approx;
 
 pub mod line {
 
-    use crate::point::Point;
+
     use std::fmt;
     use std::cmp::PartialOrd;
+    use crate::point::Point;
 
     pub struct VerticalLine {
         top: Point,
@@ -18,6 +19,10 @@ pub mod line {
 
     impl VerticalLine {
         pub fn new(top: Point, bottom: Point) -> VerticalLine {
+            if !(approx::AbsDiffEq::abs_diff_eq(&top.x, &bottom.x, std::f64::EPSILON)) {
+                panic!("Line is not vertical: {}, {}", top, bottom);
+            }
+
             let (top_y, bottom_y) = match PartialOrd::lt(&top.y, &bottom.y) {
                 true => (bottom.y, top.y),
                 false => (top.y, bottom.y)
@@ -48,6 +53,10 @@ pub mod line {
 
     impl HorizontalLine {
         pub fn new(left: Point, right: Point) -> HorizontalLine {
+            if !(approx::AbsDiffEq::abs_diff_eq(&left.y, &right.y, std::f64::EPSILON)) {
+                panic!("Line is not horizontal: {}, {}", left, right);
+            }
+
             let (left_x, right_x) = match PartialOrd::lt(&right.x, &left.x) {
                 true => (right.x, left.x),
                 false => (left.x, right.x)
