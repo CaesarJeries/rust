@@ -1,6 +1,8 @@
 use std::fmt;
 
-#[derive(Copy, Clone)]
+extern crate approx;
+
+#[derive(Debug, Copy, Clone)]
 pub struct Point {
     pub x: f64,
     pub y: f64,
@@ -38,3 +40,11 @@ impl fmt::Display for Point {
         write!(f, "({:.3}, {:.3})", self.x, self.y)        
     }
 }
+
+impl PartialEq for Point {
+    fn eq(&self, other: &Self) -> bool {
+        approx::AbsDiffEq::abs_diff_eq(&self.x, &other.x, std::f64::EPSILON) &&
+        approx::AbsDiffEq::abs_diff_eq(&self.y, &other.y, std::f64::EPSILON)
+    }
+}
+impl Eq for Point {}
