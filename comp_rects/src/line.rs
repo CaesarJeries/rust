@@ -48,9 +48,14 @@ pub mod line {
 
     impl HorizontalLine {
         pub fn new(left: Point, right: Point) -> HorizontalLine {
+            let (left_x, right_x) = match PartialOrd::lt(&right.x, &left.x) {
+                true => (right.x, left.x),
+                false => (left.x, right.x)
+            };
+
             HorizontalLine {
-                left,
-                right
+                left: Point::new(left_x, left.y),
+                right: Point::new(right_x, left.y)
             }
         }
     }
