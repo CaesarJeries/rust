@@ -25,7 +25,7 @@ pub mod line {
     impl VerticalLine {
         pub fn new(top: Point, bottom: Point) -> VerticalLine {
             if !(approx::AbsDiffEq::abs_diff_eq(&top.x, &bottom.x, std::f64::EPSILON)) {
-                panic!("Line is not vertical: {}, {}", top, bottom);
+                panic!("Line is not vertical");
             }
 
             let (top_y, bottom_y) = match PartialOrd::lt(&top.y, &bottom.y) {
@@ -59,7 +59,7 @@ pub mod line {
     impl HorizontalLine {
         pub fn new(left: Point, right: Point) -> HorizontalLine {
             if !(approx::AbsDiffEq::abs_diff_eq(&left.y, &right.y, std::f64::EPSILON)) {
-                panic!("Line is not horizontal: {}, {}", left, right);
+                panic!("Line is not horizontal");
             }
 
             let (left_x, right_x) = match PartialOrd::lt(&right.x, &left.x) {
