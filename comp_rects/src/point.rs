@@ -10,7 +10,7 @@ impl Point {
 
     pub fn new(x: f64, y: f64) -> Point {
         Point {
-            x, y, z: 0.
+            x, y, z: 0 as f64
         }
     }
 

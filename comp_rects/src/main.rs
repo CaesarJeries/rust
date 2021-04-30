@@ -18,8 +18,8 @@ fn main() {
     println!("p.distance(p1) = {}", p.distance(&p1));
 
     let vline = VerticalLine::new(
-        Point::new(13., 0.),
-        Point::new(13., 42.)
+        Point::new(2., 0.),
+        Point::new(2., 42.)
     );
 
     let hline = HorizontalLine::new(
@@ -32,4 +32,7 @@ fn main() {
 
     let r = Rect::new(Point::new(13., 13.), Point::new(42., 42.));
     println!("Rect: {}", r);
+
+    let ip = vline.get_intersection(&hline);
+    println!("intersection: {}", ip);
 }
