@@ -42,4 +42,6 @@ fn main() {
     for p in points {
         println!("{}", p);
     }
+
+    r.draw();
 }

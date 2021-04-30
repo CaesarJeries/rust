@@ -1,7 +1,15 @@
+extern crate draw;
 
 use std::fmt;
 use std::collections::HashMap;
 use std::vec::Vec;
+
+use draw::Canvas;
+use draw::Color;
+use draw::Drawing;
+use draw::Shape;
+use draw::Style;
+
 use crate::point::Point;
 use crate::line::line::Line;
 use crate::line::line::HorizontalLine;
@@ -65,6 +73,25 @@ impl Rect {
         }
 
         return intersection_points;
+    }
+    
+    pub fn draw(&self) {
+        let mut canvas = Canvas::new(100, 100);
+
+        let rect = Drawing::new()
+                    .with_shape(Shape::Rectangle {
+                        width: (self.top_right.x - self.bottom_left.x) as u32,
+                        height: (self.top_right.y - self.bottom_left.y) as u32
+                    })
+                    .with_xy(25.0, 25.0)
+                    .with_style(Style::stroked(5, Color::black()));
+        canvas.display_list.add(rect);
+        draw::render::save(
+                    &canvas,
+                    "tests/svg/basic_end_to_end2.svg",
+                    draw::SvgRenderer::new(),
+                    )
+                    .expect("Failed to save")
     }
 }
 

@@ -2,10 +2,10 @@ extern crate approx;
 
 pub mod line {
 
-
     use std::fmt;
     use std::cmp::PartialOrd;
     use std::vec::Vec;
+
     use crate::point::Point;
 
     pub trait Line {
@@ -54,6 +54,7 @@ pub mod line {
 
             Point::new(self.bottom.x, hline.left.y)
         }
+
     }
 
     impl HorizontalLine {
