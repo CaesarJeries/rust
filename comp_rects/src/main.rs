@@ -1,15 +1,14 @@
-
 mod point;
 mod line;
 mod rectangle;
 
-use point::Point;
-use line::line::HorizontalLine;
-use line::line::VerticalLine;
-use rectangle::Rect;
+use crate::point::Point;
+use crate::line::line::HorizontalLine;
+use crate::line::line::VerticalLine;
+use crate::rectangle::Rect;
 
 fn main() {
-    let p = Point::new(0., 0.);
+    let p = Point::origin();
 
     println!("Hello, world!");
     println!("p = {}", p);
@@ -35,4 +34,12 @@ fn main() {
 
     let ip = vline.get_intersection(&hline);
     println!("intersection: {}", ip);
+
+    let frame = Rect::new(Point::new(0., 0.), Point::new(100., 100.));
+    let points = r.get_intersection_with_frame(&frame);
+    
+    println!("intersection points");
+    for p in points {
+        println!("{}", p);
+    }
 }

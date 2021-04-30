@@ -1,3 +1,3 @@
-mod point;
-mod line;
-mod rectangle;
+pub mod point;
+pub mod line;
+pub mod rectangle;

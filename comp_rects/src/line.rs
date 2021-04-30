@@ -5,7 +5,12 @@ pub mod line {
 
     use std::fmt;
     use std::cmp::PartialOrd;
+    use std::vec::Vec;
     use crate::point::Point;
+
+    pub trait Line {
+        fn get_points(&self) -> Vec<Point>;
+    }
 
     pub struct VerticalLine {
         top: Point,
@@ -66,6 +71,28 @@ pub mod line {
                 left: Point::new(left_x, left.y),
                 right: Point::new(right_x, left.y)
             }
+        }
+    }
+
+    impl Line for VerticalLine {
+        fn get_points(&self) -> Vec<Point> {
+            let mut points = Vec::with_capacity(2);
+            
+            points.push(self.top);
+            points.push(self.bottom);
+
+            return points;
+        }
+    }
+
+    impl Line for HorizontalLine {
+        fn get_points(&self) -> Vec<Point> {
+            let mut points = Vec::with_capacity(2);
+            
+            points.push(self.left);
+            points.push(self.right);
+
+            return points;
         }
     }
 

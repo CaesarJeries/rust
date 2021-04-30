@@ -1,5 +1,6 @@
 use std::fmt;
 
+#[derive(Copy, Clone)]
 pub struct Point {
     pub x: f64,
     pub y: f64,
@@ -11,6 +12,14 @@ impl Point {
     pub fn new(x: f64, y: f64) -> Point {
         Point {
             x, y, z: 0 as f64
+        }
+    }
+
+    pub fn origin() -> Point {
+        Point {
+            x: 0.,
+            y: 0.,
+            z: 0.
         }
     }
 
@@ -26,6 +35,6 @@ impl Point {
 impl fmt::Display for Point {
 
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "({:.3}, {:.3}, {:.3})", self.x, self.y, self.z)        
+        write!(f, "({:.3}, {:.3})", self.x, self.y)        
     }
 }
