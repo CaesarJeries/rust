@@ -1,10 +1,12 @@
 
 mod point;
 mod line;
+mod rectangle;
 
 use point::Point;
 use line::line::HorizontalLine;
 use line::line::VerticalLine;
+use rectangle::Rect;
 
 fn main() {
     let p = Point::new(0., 0.);
@@ -27,4 +29,7 @@ fn main() {
 
     println!("vline: {}", vline);
     println!("hline: {}", hline);
+
+    let r = Rect::new(Point::new(13., 13.), Point::new(42., 42.));
+    println!("Rect: {}", r);
 }
