@@ -11,6 +11,11 @@ name = "rotating_rectangle"
 test = false
 bench = false
 
+[[bin]]
+name = "hello_piston"
+test = false
+bench = false
+
 
 [dependencies]
 gl = "*"
@@ -18,6 +23,7 @@ glutin = "*"
 approx = "0.4.0"
 draw = "0.3.0"
 piston = "0.53.0"
+piston_window = "*"
 piston2d-graphics = "0.40.0"
 pistoncore-glutin_window = "0.69.0"
 piston2d-opengl_graphics = "0.78.0"

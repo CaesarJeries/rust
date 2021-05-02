@@ -41,14 +41,10 @@ pub mod line {
 
         pub fn get_intersection(&self, hline: &HorizontalLine) -> Point {
             if (hline.left.y < self.bottom.y) | (hline.left.y > self.top.y) {
-                println!("Horizontal line: {}", hline);
-                println!("Vertical line: {}", self);
                 panic!("Lines do not intersect");
             }
 
             if (self.bottom.x < hline.left.x) | (self.bottom.x > hline.right.x) {
-                println!("Horizontal line: {}", hline);
-                println!("Vertical line: {}", self);
                 panic!("Lines do not intersect");
             }
 
